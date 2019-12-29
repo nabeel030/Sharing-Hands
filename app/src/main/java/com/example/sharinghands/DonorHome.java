@@ -3,25 +3,38 @@ package com.example.sharinghands;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.sharinghands.ui.Donor.DonorLoginFragment;
+import com.example.sharinghands.ui.Post;
+import com.example.sharinghands.ui.PostAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.ArrayList;
+
 public class DonorHome extends AppCompatActivity {
 
     Context context = this;
+    RecyclerView recyclerView;
+    RecyclerView.Adapter adapter;
+    RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +42,62 @@ public class DonorHome extends AppCompatActivity {
         setContentView(R.layout.activity_donor_home);
 
         setTitle("Active Posts");
+
+        recyclerView = findViewById(R.id.post_recyclerview);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+
+
+        ArrayList<Post> arrayList = new ArrayList<>();
+
+        /*arrayList.add(new Post(R.drawable.logo,"Sharing Hands","Post Title","These are some description",
+                        R.drawable.logo,15000,5000));
+
+        arrayList.add(new Post(R.drawable.logo,"NGO Name","Post Title","These are some description",
+                        R.drawable.logo,15000,5000));
+
+        arrayList.add(new Post(R.drawable.logo,"NGO Name","Post Title","These are some description",
+                R.drawable.logo,15000,5000));
+
+        arrayList.add(new Post(R.drawable.logo,"NGO Name","Post Title","These are some description",
+                R.drawable.logo,15000,5000));
+
+        arrayList.add(new Post(R.drawable.logo,"NGO Name","Post Title","These are some description",
+                R.drawable.logo,15000,5000));
+
+        arrayList.add(new Post(R.drawable.logo,"NGO Name","Post Title","These are some description",
+                R.drawable.logo,15000,5000));
+
+        arrayList.add(new Post(R.drawable.logo,"NGO Name","Post Title","These are some description",
+                R.drawable.logo,15000,5000));
+
+        arrayList.add(new Post(R.drawable.logo,"NGO Name","Post Title","These are some description",
+                R.drawable.logo,15000,5000));
+
+        arrayList.add(new Post(R.drawable.logo,"NGO Name","Post Title","These are some description",
+                R.drawable.logo,15000,5000));
+
+        arrayList.add(new Post(R.drawable.logo,"NGO Name","Post Title","These are some description",
+                R.drawable.logo,15000,5000));
+
+        arrayList.add(new Post(R.drawable.logo,"NGO Name","Post Title","These are some description",
+                R.drawable.logo,15000,5000));
+*/
+        arrayList.add(new Post(R.drawable.logo,"Sharing Hands","Wedding","Donate your money to support.",
+                R.drawable.logo,100,100000));
+
+        arrayList.add(new Post(R.drawable.icon,"Helping Hands","Health care","Some post description here.",
+                R.drawable.post_image,1000,100000));
+
+        arrayList.add(new Post(R.drawable.logo,"Almasad","Home Utilities","share your money with others",
+                R.drawable.logo,10000,100000));
+
+        adapter = new PostAdapter(arrayList,context);
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -89,7 +158,6 @@ public class DonorHome extends AppCompatActivity {
                             }
                         });
 
-
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
 
@@ -98,5 +166,10 @@ public class DonorHome extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

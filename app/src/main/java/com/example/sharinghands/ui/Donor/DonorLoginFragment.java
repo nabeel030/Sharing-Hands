@@ -18,11 +18,14 @@ import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.sharinghands.DonorHome;
 import com.example.sharinghands.R;
+import com.example.sharinghands.SinglePost;
+import com.example.sharinghands.ui.gallery.GalleryFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
@@ -91,11 +94,14 @@ public class DonorLoginFragment extends Fragment {
                                                 AlertDialog alertDialog = alertDialogBuilder.create();
                                                 alertDialog.show();
 
-                                            } else {
+
+
+                                            }else {
                                                 Intent intent = new Intent(getActivity(), DonorHome.class);
                                                 startActivity(intent);
                                                 getActivity().finish();
                                             }
+
                                         }
                                     });
                         }
@@ -105,7 +111,7 @@ public class DonorLoginFragment extends Fragment {
                 register_link.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(getContext(),DonorRegistration.class);
+                        Intent intent = new Intent(getContext(), DonorRegistration.class);
                         startActivity(intent);
                         (getActivity()).overridePendingTransition(0, 0);
                     }

@@ -84,5 +84,9 @@ public class ChangePassword extends AppCompatActivity {
         });
     }
 
-
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this,DonorHome.class));
+        finish();
     }
+}

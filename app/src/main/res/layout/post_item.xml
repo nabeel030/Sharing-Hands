@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/post_item_r_layout"
     android:layout_height="match_parent"
     android:padding="10dp">
 
@@ -13,13 +14,14 @@
         android:src="@drawable/logo" />
 
     <TextView
-        android:id="@+id/post"
+        android:id="@+id/ngo_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginStart="10dp"
         android:layout_toEndOf="@+id/ngo_logo"
         android:text="NGO Name"
+        android:textColor="@android:color/black"
         android:textSize="17sp"
         tools:ignore="UnknownId" />
 
@@ -38,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/post_title"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="6dp"
         android:text="Dummy details of this post is displayed here!" />
 
     <androidx.cardview.widget.CardView
@@ -46,8 +48,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/post_details"
         android:layout_marginTop="10dp"
-        app:cardCornerRadius="0dp"
-
+        app:cardCornerRadius="10dp"
+        android:outlineAmbientShadowColor="@android:color/holo_blue_light"
+        android:outlineSpotShadowColor="@color/colorAccent"
         tools:ignore="ExtraText">
 
         <RelativeLayout
@@ -87,9 +90,10 @@
                 android:id="@+id/donate_btn"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/amount_raised"6
+                android:layout_below="@+id/amount_raised"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="7dp"
+                android:background="@drawable/button"
                 android:text="Donate Now" />
 
             <Button
@@ -99,6 +103,7 @@
                 android:layout_below="@+id/amount_required"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="7dp"
+                android:background="@drawable/button"
                 android:text="View Details" />
 
         </RelativeLayout>

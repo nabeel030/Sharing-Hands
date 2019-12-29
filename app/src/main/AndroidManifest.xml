@@ -21,6 +21,7 @@
         <activity android:name=".ui.Student.StudentRegistration" />
         <activity android:name=".ui.NGO.NGORegistration" />
         <activity android:name=".ui.Donor.DonorRegistration" />
+        <activity android:name=".SinglePost" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
