@@ -32,4 +32,8 @@ public class LoginActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 }

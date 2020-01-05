@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.sharinghands.DonorHome;
@@ -35,6 +36,7 @@ public class DonorRegistration extends AppCompatActivity {
 
     EditText name, email, password, confirm_password;
     Button btn;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +54,15 @@ public class DonorRegistration extends AppCompatActivity {
         email = findViewById(R.id.donor_email_address);
         password = findViewById(R.id.donor_passcode);
         confirm_password = findViewById(R.id.donor_confirm_password);
+        progressBar = findViewById(R.id.progress_circular_reg);
 
         btn = findViewById(R.id.donor_register);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                progressBar.setVisibility(View.VISIBLE);
                 final String username = name.getText().toString();
                 String emailAddress = email.getText().toString();
                 String donorPassword = password.getText().toString();
@@ -75,6 +80,8 @@ public class DonorRegistration extends AppCompatActivity {
                                         .addOnCompleteListener(DonorRegistration.this, new OnCompleteListener<AuthResult>() {
                                             @Override
                                             public void onComplete(@NonNull Task<AuthResult> task) {
+
+                                                progressBar.setVisibility(View.GONE);
 
                                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 

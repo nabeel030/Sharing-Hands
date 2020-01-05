@@ -57,6 +57,7 @@ public class DonorLoginFragment extends Fragment {
         final Button login = root.findViewById(R.id.donor_login);
         final TextView register_link = root.findViewById(R.id.donor_register_link);
         final ProgressBar progressBar = root.findViewById(R.id.progress_circular);
+
         homeViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -68,6 +69,8 @@ public class DonorLoginFragment extends Fragment {
                         String emailaddress = email.getText().toString();
                         final String passcode = password.getText().toString();
 
+                        progressBar.setVisibility(View.VISIBLE);
+
                         if (emailaddress.isEmpty() || passcode.isEmpty()) {
 
                             Toast.makeText(getContext(), "Both Fields Are Required!", Toast.LENGTH_SHORT).show();
@@ -76,6 +79,8 @@ public class DonorLoginFragment extends Fragment {
                                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                         @Override
                                         public void onComplete(@NonNull Task<AuthResult> task) {
+
+                                            progressBar.setVisibility(View.GONE);
 
                                             if (!task.isSuccessful()) {
 

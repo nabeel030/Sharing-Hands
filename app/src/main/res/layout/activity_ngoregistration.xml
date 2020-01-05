@@ -115,4 +115,13 @@
         android:textColor="@android:color/white"
         android:textSize="18sp"
         />
+
+    <ProgressBar
+        android:id="@+id/progress_circular_ngo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        android:layout_above="@id/ngo_register"
+        android:layout_centerHorizontal="true"
+        />
 </RelativeLayout>

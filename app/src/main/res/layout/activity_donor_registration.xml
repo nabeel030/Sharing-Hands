@@ -85,5 +85,14 @@
         android:textSize="18sp"
         />
 
+    <ProgressBar
+        android:id="@+id/progress_circular_reg"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        android:layout_above="@id/donor_register"
+        android:layout_centerHorizontal="true"
+        />
+
 
 </RelativeLayout>
